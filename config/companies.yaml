@@ -5,41 +5,68 @@
 # ats: auto means detect_ats.py will resolve it. Run:
 #   python detect_ats.py
 # which writes config/companies.resolved.yaml (preferred by src/main.py).
+#
+# careers_url values were verified via web research on 2026-08-05. A few
+# notes on companies that don't use one of the 6 supported ATS platforms
+# (they'll fall back to generic HTML scraping, which is best-effort):
+#   - Zions Bancorporation: custom portal (SelectMinds)
+#   - Goldman Sachs: proprietary "Higher" platform
+#   - WCF Insurance: ApplicantPro
+#   - American Express: Avature
+#   - Ally Financial: Avature
+#   - EY: SAP SuccessFactors
+#   - Eide Bailly, eBay: custom-branded, backend unconfirmed
+#   - CBIZ: Oracle Recruiting Cloud
+#   - Tanner LLC: JazzHR
+#   - Qualtrics: Phenom People
+#   - Cotiviti: iCIMS
+#   - L3Harris: TalentBrew
+#   - Larry H. Miller Company, Sorenson Communications: UKG/UltiPro
+#   - Savage Services: Dayforce HCM
+#   - USANA: Jobvite
+#   - University of Utah: PeopleAdmin
+#   - Salt Lake County, Salt Lake Community College: NEOGOV/GovernmentJobs
+#   - State of Utah: Cornerstone OnDemand
+#   - Utah Transit Authority, Zonos, Young Living, Deloitte, KPMG,
+#     Haynie & Company, Cook Martin Poulson, 1-800 Contacts: platform
+#     unconfirmed or self-hosted
+# Progrexion was dropped: PGX Holdings filed Chapter 11 in 2023 and the
+# domain no longer resolves -- no successor careers site found.
 
 companies:
   # --- Banking / finance / fintech ---
   - name: Zions Bancorporation
-    careers_url: https://www.zionsbancorporation.com/careers
+    careers_url: https://careers.zionsbancorp.com/
     ats: auto
   - name: Goldman Sachs
-    careers_url: https://www.goldmansachs.com/careers/
+    careers_url: https://higher.gs.com/
     ats: auto
   - name: WCF Insurance
-    careers_url: https://www.wcf.com/about/careers
+    careers_url: https://wcfgroup.applicantpro.com/
     ats: auto
   - name: Mountain America Credit Union
-    careers_url: https://www.macu.com/careers
+    careers_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
     ats: auto
   - name: Progressive Leasing
-    careers_url: https://www.progleasing.com/careers/
+    careers_url: https://progleasing.wd5.myworkdayjobs.com/ProgLeasingCareers
     ats: auto
   - name: MX
-    careers_url: https://www.mx.com/careers/
+    careers_url: https://job-boards.greenhouse.io/mxtechnologiesinc
     ats: auto
   - name: Galileo Financial Technologies
     careers_url: https://www.galileo-ft.com/careers/
     ats: auto
   - name: BILL (Divvy)
-    careers_url: https://www.bill.com/careers
+    careers_url: https://job-boards.greenhouse.io/billcom
     ats: auto
   - name: American Express
-    careers_url: https://aexp.eightfold.ai/careers
+    careers_url: https://careers.americanexpress.com/en/sites/CX_1/jobs
     ats: auto
   - name: Ally Financial
-    careers_url: https://ally.eightfold.ai/careers
+    careers_url: https://ally.avature.net/careers
     ats: auto
   - name: Domo
-    careers_url: https://www.domo.com/company/careers
+    careers_url: https://domo.wd12.myworkdayjobs.com/DomoCareers
     ats: auto
   - name: Podium
     careers_url: https://www.podium.com/careers/
@@ -56,50 +83,50 @@ companies:
   - name: Solera Holdings
     careers_url: https://www.solera.com/careers/
     ats: auto
-  - name: Progrexion
-    careers_url: https://www.progrexion.com/careers
-    ats: auto
 
   # --- Big 4 / national accounting firms ---
   - name: Deloitte
-    careers_url: https://www2.deloitte.com/us/en/careers/careers.html
+    careers_url: https://apply.deloitte.com/careers/SearchJobs?sort=relevancy
     ats: auto
   - name: PwC
-    careers_url: https://www.pwc.com/us/en/careers.html
+    careers_url: https://pwc.wd3.myworkdayjobs.com/US_Experienced_Careers
     ats: auto
   - name: EY
-    careers_url: https://www.ey.com/en_us/careers
+    careers_url: https://careers.ey.com/
     ats: auto
   - name: KPMG
-    careers_url: https://www.kpmguscareers.com/
+    careers_url: https://uskpmgats.avature.net/careers/SearchResults
     ats: auto
 
   # --- Regional CPA / accounting firms ---
   - name: Eide Bailly
-    careers_url: https://www.eidebailly.com/careers
+    careers_url: https://careers.eidebailly.com/jobs
     ats: auto
   - name: CBIZ
-    careers_url: https://www.cbiz.com/careers
+    careers_url: https://ebez.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1
     ats: auto
   - name: Tanner LLC
-    careers_url: https://www.tannerco.com/careers/
+    careers_url: https://tannerllc.applytojob.com/
     ats: auto
   - name: Haynie & Company
-    careers_url: https://haynieandcompany.com/careers/
+    careers_url: https://recruiting.paylocity.com/recruiting/jobs/All/2b405fc5-6c80-4c1b-9222-afe75bb3bc96/Haynie-and-Company
     ats: auto
   - name: Cook Martin Poulson
-    careers_url: https://www.cmpcpa.com/careers
+    careers_url: https://cmp.cpa/careers/
     ats: auto
 
   # --- Tech / SaaS ---
   - name: Adobe
-    careers_url: https://www.adobe.com/careers.html
+    careers_url: https://adobe.wd5.myworkdayjobs.com/external_experienced
     ats: auto
   - name: eBay
-    careers_url: https://careers.ebayinc.com/
-    ats: auto
+    # The careers page's HTML contains an unreliable myworkdayjobs.com
+    # reference (matched to an individual job link, not the board root) --
+    # pinned to skip auto-detection and use the generic HTML fallback instead.
+    careers_url: https://jobs.ebayinc.com/us/en/search-results
+    ats: unknown
   - name: Qualtrics
-    careers_url: https://www.qualtrics.com/careers/
+    careers_url: https://www.qualtrics.com/careers/us/en/search-results
     ats: auto
   - name: Instructure
     careers_url: https://www.instructure.com/careers
@@ -108,28 +135,31 @@ companies:
     careers_url: https://www.pluralsight.com/careers
     ats: auto
   - name: Ancestry
-    careers_url: https://www.ancestry.com/corporate/careers
+    careers_url: https://ancestry.wd501.myworkdayjobs.com/Careers
     ats: auto
   - name: Vivint
-    careers_url: https://www.vivint.com/careers
-    ats: auto
+    # Page is genuinely Workday-hosted, but the wday/cxs jobs endpoint 422s
+    # for every tenant/dc/site combination tried -- pinned to skip
+    # auto-detection and use the generic HTML fallback instead.
+    careers_url: https://vivint.wd5.myworkdayjobs.com/vivintjobs
+    ats: unknown
   - name: Health Catalyst
-    careers_url: https://www.healthcatalyst.com/careers/
+    careers_url: https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers
     ats: auto
   - name: Recursion
     careers_url: https://www.recursion.com/careers
     ats: auto
   - name: Lucid Software
-    careers_url: https://www.lucidchart.com/careers
+    careers_url: https://job-boards.greenhouse.io/lucidsoftware
     ats: auto
   - name: Entrata
     careers_url: https://www.entrata.com/company/careers
     ats: auto
   - name: 1-800 Contacts
-    careers_url: https://www.1800contacts.com/corporate/careers
+    careers_url: https://www.1800contacts.com/careers
     ats: auto
   - name: Overstock.com
-    careers_url: https://www.overstock.com/careers
+    careers_url: https://overstock.wd5.myworkdayjobs.com/BedBathandBeyond_Careers
     ats: auto
 
   # --- Healthcare / life sciences ---
@@ -140,30 +170,30 @@ companies:
     careers_url: https://www.merit.com/careers/
     ats: auto
   - name: Myriad Genetics
-    careers_url: https://www.myriad.com/careers/
+    careers_url: https://careers.smartrecruiters.com/myriadgenetics1
     ats: auto
   - name: USANA
-    careers_url: https://www.usana.com/dotCom/careers
+    careers_url: https://jobs.jobvite.com/usana
     ats: auto
   - name: SelectHealth
-    careers_url: https://selecthealth.org/about/careers
+    careers_url: https://imh.wd108.myworkdayjobs.com/IntermountainCareers
     ats: auto
   - name: CHG Healthcare
-    careers_url: https://chghealthcare.com/careers
+    careers_url: https://chghealthcare.wd1.myworkdayjobs.com/External
     ats: auto
   - name: Cotiviti
-    careers_url: https://www.cotiviti.com/careers/
+    careers_url: https://globalcareers-cotiviti.icims.com/jobs/intro
     ats: auto
 
   # --- Aerospace / manufacturing / consumer ---
   - name: L3Harris
-    careers_url: https://www.l3harris.com/careers
+    careers_url: https://careers.l3harris.com/en/search-jobs
     ats: auto
   - name: Traeger Grills
-    careers_url: https://www.traeger.com/careers
+    careers_url: https://job-boards.greenhouse.io/traegergrills
     ats: auto
   - name: Young Living
-    careers_url: https://www.youngliving.com/en_US/company/careers
+    careers_url: https://www.youngliving.com/en_us/company/careers/index
     ats: auto
   - name: O.C. Tanner
     careers_url: https://www.octanner.com/careers.html
@@ -172,34 +202,34 @@ companies:
     careers_url: https://www.lhm.com/careers/
     ats: auto
   - name: Sorenson Communications
-    careers_url: https://www.sorenson.com/careers/
+    careers_url: https://recruiting2.ultipro.com/SOR1001SORE/JobBoard/1fe5e40e-4e0c-4b11-86e3-9a8e1f396263/
     ats: auto
   - name: Bonneville International
-    careers_url: https://bonneville.com/careers/
+    careers_url: https://deseretmanagement.wd1.myworkdayjobs.com/BonSF
     ats: auto
   - name: Savage Services
-    careers_url: https://www.savageservices.com/careers
+    careers_url: https://jobs.dayforcehcm.com/ssc/CandidatePortal/en-US/ssc
     ats: auto
   - name: Extra Space Storage
-    careers_url: https://www.extraspace.com/careers/
+    careers_url: https://extraspace.wd5.myworkdayjobs.com/ESS_External
     ats: auto
 
   # --- Public sector / education ---
   - name: University of Utah
-    careers_url: https://www.hr.utah.edu/jobs/
+    careers_url: https://utah.peopleadmin.com/postings/search
     ats: auto
   - name: Salt Lake City Corp
-    careers_url: https://www.slc.gov/hr/employment/
+    careers_url: https://slcgov.wd1.myworkdayjobs.com/SLC
     ats: auto
   - name: Salt Lake County
-    careers_url: https://www.slco.org/human-resources/employment/
+    careers_url: https://www.governmentjobs.com/careers/saltlakecounty
     ats: auto
   - name: State of Utah
-    careers_url: https://jobs.utah.gov/
+    careers_url: https://utdgohcm.csod.com/ux/ats/careersite/4/home?c=utdgohcm
     ats: auto
   - name: Utah Transit Authority
-    careers_url: https://www.rideuta.com/Careers
+    careers_url: https://careers.rideuta.com/
     ats: auto
   - name: Salt Lake Community College
-    careers_url: https://www.slcc.edu/hr/employment/index.aspx
+    careers_url: https://www.schooljobs.com/careers/slcc
     ats: auto

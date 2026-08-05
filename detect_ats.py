@@ -16,8 +16,15 @@ RESOLVED_PATH = Path("config/companies.resolved.yaml")
 TIMEOUT = 20
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; slc-internship-scraper/1.0)"}
 
+# Greenhouse's embed snippet is `boards.greenhouse.io/embed/job_board?for=TOKEN`.
+# Check that pattern first -- otherwise the generic path-token regex below
+# matches the literal word "embed" as the token.
+GREENHOUSE_EMBED_RE = re.compile(
+    r"boards\.greenhouse\.io/embed/job_board\?(?:[^\"'\s]*&)?for=([\w-]+)", re.IGNORECASE
+)
+
 SIGNATURES = [
-    ("greenhouse", re.compile(r"(?:job-)?boards\.greenhouse\.io/([\w-]+)", re.IGNORECASE)),
+    ("greenhouse", re.compile(r"(?:job-)?boards\.greenhouse\.io/(?!embed\b)([\w-]+)", re.IGNORECASE)),
     ("lever", re.compile(r"jobs\.lever\.co/([\w-]+)", re.IGNORECASE)),
     ("ashby", re.compile(r"jobs\.ashbyhq\.com/([\w-]+)", re.IGNORECASE)),
     ("smartrecruiters", re.compile(r"jobs\.smartrecruiters\.com/([\w-]+)", re.IGNORECASE)),
@@ -29,6 +36,9 @@ WORKDAY_RE = re.compile(
 
 
 def detect(haystack: str):
+    embed_match = GREENHOUSE_EMBED_RE.search(haystack)
+    if embed_match:
+        return {"ats": "greenhouse", "token": embed_match.group(1)}
     for ats, pattern in SIGNATURES:
         match = pattern.search(haystack)
         if match:

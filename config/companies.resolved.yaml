@@ -1,0 +1,305 @@
+companies:
+- name: Zions Bancorporation
+  careers_url: https://careers.zionsbancorp.com/
+  ats: unknown
+  source_url: https://careers.zionsbancorp.com/
+- name: Goldman Sachs
+  careers_url: https://higher.gs.com/
+  ats: unknown
+  source_url: https://higher.gs.com/results
+- name: WCF Insurance
+  careers_url: https://wcfgroup.applicantpro.com/
+  ats: unknown
+  source_url: https://wcfgroup.applicantpro.com/jobs/
+- name: Mountain America Credit Union
+  careers_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
+  ats: workday
+  source_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
+  tenant: macu
+  dc: wd5
+  site: MACU_Careers
+- name: Progressive Leasing
+  careers_url: https://progleasing.wd5.myworkdayjobs.com/ProgLeasingCareers
+  ats: workday
+  source_url: https://progleasing.wd5.myworkdayjobs.com/ProgLeasingCareers
+  tenant: progleasing
+  dc: wd5
+  site: ProgLeasingCareers
+- name: MX
+  careers_url: https://job-boards.greenhouse.io/mxtechnologiesinc
+  ats: greenhouse
+  source_url: https://job-boards.greenhouse.io/mxtechnologiesinc
+  token: mxtechnologiesinc
+- name: Galileo Financial Technologies
+  careers_url: https://www.galileo-ft.com/careers/
+  ats: greenhouse
+  source_url: https://tech.sofi.com/careers/
+  token: sofitechsolutions
+- name: BILL (Divvy)
+  careers_url: https://job-boards.greenhouse.io/billcom
+  ats: greenhouse
+  source_url: https://www.bill.com/jobs
+  token: billcom
+- name: American Express
+  careers_url: https://careers.americanexpress.com/en/sites/CX_1/jobs
+  ats: unknown
+  source_url: https://careers.americanexpress.com/en/sites/CX_1/jobs
+- name: Ally Financial
+  careers_url: https://ally.avature.net/careers
+  ats: unknown
+  source_url: https://ally.avature.net/careers
+- name: Domo
+  careers_url: https://domo.wd12.myworkdayjobs.com/DomoCareers
+  ats: workday
+  source_url: https://domo.wd12.myworkdayjobs.com/DomoCareers
+  tenant: domo
+  dc: wd12
+  site: DomoCareers
+- name: Podium
+  careers_url: https://www.podium.com/careers/
+  ats: greenhouse
+  source_url: https://www.podium.com/careers
+  token: podium81
+- name: Weave
+  careers_url: https://www.getweave.com/careers/
+  ats: ashby
+  source_url: https://www.getweave.com/careers/
+  token: weave
+- name: Owlet
+  careers_url: https://owletcare.com/pages/careers
+  ats: workable
+  source_url: https://owletcare.com/pages/careers
+  token: owlet-baby-care-1
+- name: Zonos
+  careers_url: https://zonos.com/careers
+  ats: unknown
+  source_url: https://zonos.com/careers
+- name: Solera Holdings
+  careers_url: https://www.solera.com/careers/
+  ats: workday
+  source_url: https://www.solera.com/careers/
+  tenant: solera
+  dc: wd5
+  site: Global_Career_Site
+- name: Deloitte
+  careers_url: https://apply.deloitte.com/careers/SearchJobs?sort=relevancy
+  ats: unknown
+  source_url: https://apply.deloitte.com/en_US/careers/SearchJobs?sort=relevancy
+- name: PwC
+  careers_url: https://pwc.wd3.myworkdayjobs.com/US_Experienced_Careers
+  ats: workday
+  source_url: https://pwc.wd3.myworkdayjobs.com/US_Experienced_Careers
+  tenant: pwc
+  dc: wd3
+  site: US_Experienced_Careers
+- name: EY
+  careers_url: https://careers.ey.com/
+  ats: unknown
+  source_url: https://careers.ey.com/
+- name: KPMG
+  careers_url: https://uskpmgats.avature.net/careers/SearchResults
+  ats: unknown
+  source_url: https://uskpmgats.avature.net/careers/SearchResults
+- name: Eide Bailly
+  careers_url: https://careers.eidebailly.com/jobs
+  ats: unknown
+  source_url: https://careers.eidebailly.com/jobs
+- name: CBIZ
+  careers_url: https://ebez.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1
+  ats: unknown
+  source_url: https://ebez.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1
+- name: Tanner LLC
+  careers_url: https://tannerllc.applytojob.com/
+  ats: unknown
+  source_url: https://tannerllc.applytojob.com/
+- name: Haynie & Company
+  careers_url: https://recruiting.paylocity.com/recruiting/jobs/All/2b405fc5-6c80-4c1b-9222-afe75bb3bc96/Haynie-and-Company
+  ats: unknown
+  source_url: https://recruiting.paylocity.com/recruiting/jobs/All/2b405fc5-6c80-4c1b-9222-afe75bb3bc96/Haynie-and-Company
+- name: Cook Martin Poulson
+  careers_url: https://cmp.cpa/careers/
+  ats: unknown
+  source_url: https://cmp.cpa/company/careers/
+- name: Adobe
+  careers_url: https://adobe.wd5.myworkdayjobs.com/external_experienced
+  ats: workday
+  source_url: https://adobe.wd5.myworkdayjobs.com/external_experienced
+  tenant: adobe
+  dc: wd5
+  site: external_experienced
+- name: eBay
+  careers_url: https://jobs.ebayinc.com/us/en/search-results
+  ats: unknown
+- name: Qualtrics
+  careers_url: https://www.qualtrics.com/careers/us/en/search-results
+  ats: unknown
+  source_url: https://www.qualtrics.com/careers/us/en/search-results
+- name: Instructure
+  careers_url: https://www.instructure.com/careers
+  ats: ashby
+  source_url: https://www.instructure.com/about/careers
+  token: instructure
+- name: Pluralsight
+  careers_url: https://www.pluralsight.com/careers
+  ats: workday
+  source_url: https://www.pluralsight.com/careers
+  tenant: pluralsight
+  dc: wd1
+  site: Careers
+- name: Ancestry
+  careers_url: https://ancestry.wd501.myworkdayjobs.com/Careers
+  ats: workday
+  source_url: https://ancestry.wd501.myworkdayjobs.com/Careers
+  tenant: ancestry
+  dc: wd501
+  site: Careers
+- name: Vivint
+  careers_url: https://vivint.wd5.myworkdayjobs.com/vivintjobs
+  ats: unknown
+- name: Health Catalyst
+  careers_url: https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers
+  ats: workday
+  source_url: https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers
+  tenant: healthcatalyst
+  dc: wd5
+  site: healthcatalystcareers
+- name: Recursion
+  careers_url: https://www.recursion.com/careers
+  ats: greenhouse
+  source_url: https://www.recursion.com/careers
+  token: recursionpharmaceuticals
+- name: Lucid Software
+  careers_url: https://job-boards.greenhouse.io/lucidsoftware
+  ats: greenhouse
+  source_url: https://job-boards.greenhouse.io/lucidsoftware
+  token: lucidsoftware
+- name: Entrata
+  careers_url: https://www.entrata.com/company/careers
+  ats: lever
+  source_url: https://www.entrata.com/careers
+  token: entrata
+- name: 1-800 Contacts
+  careers_url: https://www.1800contacts.com/careers
+  ats: unknown
+  source_url: https://www.1800contacts.com/careers
+- name: Overstock.com
+  careers_url: https://overstock.wd5.myworkdayjobs.com/BedBathandBeyond_Careers
+  ats: workday
+  source_url: https://overstock.wd5.myworkdayjobs.com/BedBathandBeyond_Careers
+  tenant: overstock
+  dc: wd5
+  site: BedBathandBeyond_Careers
+- name: Intermountain Health
+  careers_url: https://intermountainhealthcare.org/careers/
+  ats: workday
+  source_url: https://intermountainhealthcare.org/careers
+  tenant: imh
+  dc: wd108
+  site: IntermountainCareers
+- name: Merit Medical
+  careers_url: https://www.merit.com/careers/
+  ats: workday
+  source_url: https://www.merit.com/careers/
+  tenant: merit
+  dc: wd503
+  site: Merit
+- name: Myriad Genetics
+  careers_url: https://careers.smartrecruiters.com/myriadgenetics1
+  ats: smartrecruiters
+  source_url: https://careers.smartrecruiters.com/myriadgenetics1
+  token: myriadgenetics1
+- name: USANA
+  careers_url: https://jobs.jobvite.com/usana
+  ats: unknown
+  source_url: https://jobs.jobvite.com/usana
+- name: SelectHealth
+  careers_url: https://imh.wd108.myworkdayjobs.com/IntermountainCareers
+  ats: workday
+  source_url: https://imh.wd108.myworkdayjobs.com/IntermountainCareers
+  tenant: imh
+  dc: wd108
+  site: IntermountainCareers
+- name: CHG Healthcare
+  careers_url: https://chghealthcare.wd1.myworkdayjobs.com/External
+  ats: workday
+  source_url: https://chghealthcare.wd1.myworkdayjobs.com/External
+  tenant: chghealthcare
+  dc: wd1
+  site: External
+- name: Cotiviti
+  careers_url: https://globalcareers-cotiviti.icims.com/jobs/intro
+  ats: unknown
+  source_url: https://globalcareers-cotiviti.icims.com/jobs/intro
+- name: L3Harris
+  careers_url: https://careers.l3harris.com/en/search-jobs
+  ats: unknown
+  source_url: https://careers.l3harris.com/en/search-jobs
+- name: Traeger Grills
+  careers_url: https://job-boards.greenhouse.io/traegergrills
+  ats: greenhouse
+  source_url: https://job-boards.greenhouse.io/traegergrills
+  token: traegergrills
+- name: Young Living
+  careers_url: https://www.youngliving.com/en_us/company/careers/index
+  ats: unknown
+  source_url: https://www.youngliving.com/en_us/company/careers/index
+- name: O.C. Tanner
+  careers_url: https://www.octanner.com/careers.html
+  ats: workday
+  source_url: https://www.octanner.com/company/careers
+  tenant: octanner
+  dc: wd501
+  site: O_C_Tanner
+- name: Larry H. Miller Company
+  careers_url: https://www.lhm.com/careers/
+  ats: unknown
+  source_url: https://www.lhm.com/careers/
+- name: Sorenson Communications
+  careers_url: https://recruiting2.ultipro.com/SOR1001SORE/JobBoard/1fe5e40e-4e0c-4b11-86e3-9a8e1f396263/
+  ats: unknown
+  source_url: https://recruiting2.ultipro.com/SOR1001SORE/JobBoard/1fe5e40e-4e0c-4b11-86e3-9a8e1f396263/
+- name: Bonneville International
+  careers_url: https://deseretmanagement.wd1.myworkdayjobs.com/BonSF
+  ats: workday
+  source_url: https://deseretmanagement.wd1.myworkdayjobs.com/BonSF
+  tenant: deseretmanagement
+  dc: wd1
+  site: BonSF
+- name: Savage Services
+  careers_url: https://jobs.dayforcehcm.com/ssc/CandidatePortal/en-US/ssc
+  ats: unknown
+  source_url: https://jobs.dayforcehcm.com/ssc/CandidatePortal/en-US/ssc
+- name: Extra Space Storage
+  careers_url: https://extraspace.wd5.myworkdayjobs.com/ESS_External
+  ats: workday
+  source_url: https://extraspace.wd5.myworkdayjobs.com/ESS_External
+  tenant: extraspace
+  dc: wd5
+  site: ESS_External
+- name: University of Utah
+  careers_url: https://utah.peopleadmin.com/postings/search
+  ats: unknown
+  source_url: https://utah.peopleadmin.com/postings/search
+- name: Salt Lake City Corp
+  careers_url: https://slcgov.wd1.myworkdayjobs.com/SLC
+  ats: workday
+  source_url: https://slcgov.wd1.myworkdayjobs.com/SLC
+  tenant: slcgov
+  dc: wd1
+  site: SLC
+- name: Salt Lake County
+  careers_url: https://www.governmentjobs.com/careers/saltlakecounty
+  ats: unknown
+  source_url: https://www.governmentjobs.com/careers/saltlakecounty
+- name: State of Utah
+  careers_url: https://utdgohcm.csod.com/ux/ats/careersite/4/home?c=utdgohcm
+  ats: unknown
+  source_url: https://utdgohcm.csod.com/ux/ats/careersite/4/home?c=utdgohcm
+- name: Utah Transit Authority
+  careers_url: https://careers.rideuta.com/
+  ats: unknown
+  source_url: https://careers.rideuta.com/
+- name: Salt Lake Community College
+  careers_url: https://www.schooljobs.com/careers/slcc
+  ats: unknown
+  source_url: https://www.schooljobs.com/careers/slcc
