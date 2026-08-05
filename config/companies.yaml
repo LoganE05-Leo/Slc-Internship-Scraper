@@ -1,0 +1,205 @@
+# ~60 companies within roughly 30 miles of downtown Salt Lake City.
+# Weighted toward finance / accounting / fintech, plus large regional
+# employers known to run finance/accounting internships.
+#
+# ats: auto means detect_ats.py will resolve it. Run:
+#   python detect_ats.py
+# which writes config/companies.resolved.yaml (preferred by src/main.py).
+
+companies:
+  # --- Banking / finance / fintech ---
+  - name: Zions Bancorporation
+    careers_url: https://www.zionsbancorporation.com/careers
+    ats: auto
+  - name: Goldman Sachs
+    careers_url: https://www.goldmansachs.com/careers/
+    ats: auto
+  - name: WCF Insurance
+    careers_url: https://www.wcf.com/about/careers
+    ats: auto
+  - name: Mountain America Credit Union
+    careers_url: https://www.macu.com/careers
+    ats: auto
+  - name: Progressive Leasing
+    careers_url: https://www.progleasing.com/careers/
+    ats: auto
+  - name: MX
+    careers_url: https://www.mx.com/careers/
+    ats: auto
+  - name: Galileo Financial Technologies
+    careers_url: https://www.galileo-ft.com/careers/
+    ats: auto
+  - name: BILL (Divvy)
+    careers_url: https://www.bill.com/careers
+    ats: auto
+  - name: American Express
+    careers_url: https://aexp.eightfold.ai/careers
+    ats: auto
+  - name: Ally Financial
+    careers_url: https://ally.eightfold.ai/careers
+    ats: auto
+  - name: Domo
+    careers_url: https://www.domo.com/company/careers
+    ats: auto
+  - name: Podium
+    careers_url: https://www.podium.com/careers/
+    ats: auto
+  - name: Weave
+    careers_url: https://www.getweave.com/careers/
+    ats: auto
+  - name: Owlet
+    careers_url: https://owletcare.com/pages/careers
+    ats: auto
+  - name: Zonos
+    careers_url: https://zonos.com/careers
+    ats: auto
+  - name: Solera Holdings
+    careers_url: https://www.solera.com/careers/
+    ats: auto
+  - name: Progrexion
+    careers_url: https://www.progrexion.com/careers
+    ats: auto
+
+  # --- Big 4 / national accounting firms ---
+  - name: Deloitte
+    careers_url: https://www2.deloitte.com/us/en/careers/careers.html
+    ats: auto
+  - name: PwC
+    careers_url: https://www.pwc.com/us/en/careers.html
+    ats: auto
+  - name: EY
+    careers_url: https://www.ey.com/en_us/careers
+    ats: auto
+  - name: KPMG
+    careers_url: https://www.kpmguscareers.com/
+    ats: auto
+
+  # --- Regional CPA / accounting firms ---
+  - name: Eide Bailly
+    careers_url: https://www.eidebailly.com/careers
+    ats: auto
+  - name: CBIZ
+    careers_url: https://www.cbiz.com/careers
+    ats: auto
+  - name: Tanner LLC
+    careers_url: https://www.tannerco.com/careers/
+    ats: auto
+  - name: Haynie & Company
+    careers_url: https://haynieandcompany.com/careers/
+    ats: auto
+  - name: Cook Martin Poulson
+    careers_url: https://www.cmpcpa.com/careers
+    ats: auto
+
+  # --- Tech / SaaS ---
+  - name: Adobe
+    careers_url: https://www.adobe.com/careers.html
+    ats: auto
+  - name: eBay
+    careers_url: https://careers.ebayinc.com/
+    ats: auto
+  - name: Qualtrics
+    careers_url: https://www.qualtrics.com/careers/
+    ats: auto
+  - name: Instructure
+    careers_url: https://www.instructure.com/careers
+    ats: auto
+  - name: Pluralsight
+    careers_url: https://www.pluralsight.com/careers
+    ats: auto
+  - name: Ancestry
+    careers_url: https://www.ancestry.com/corporate/careers
+    ats: auto
+  - name: Vivint
+    careers_url: https://www.vivint.com/careers
+    ats: auto
+  - name: Health Catalyst
+    careers_url: https://www.healthcatalyst.com/careers/
+    ats: auto
+  - name: Recursion
+    careers_url: https://www.recursion.com/careers
+    ats: auto
+  - name: Lucid Software
+    careers_url: https://www.lucidchart.com/careers
+    ats: auto
+  - name: Entrata
+    careers_url: https://www.entrata.com/company/careers
+    ats: auto
+  - name: 1-800 Contacts
+    careers_url: https://www.1800contacts.com/corporate/careers
+    ats: auto
+  - name: Overstock.com
+    careers_url: https://www.overstock.com/careers
+    ats: auto
+
+  # --- Healthcare / life sciences ---
+  - name: Intermountain Health
+    careers_url: https://intermountainhealthcare.org/careers/
+    ats: auto
+  - name: Merit Medical
+    careers_url: https://www.merit.com/careers/
+    ats: auto
+  - name: Myriad Genetics
+    careers_url: https://www.myriad.com/careers/
+    ats: auto
+  - name: USANA
+    careers_url: https://www.usana.com/dotCom/careers
+    ats: auto
+  - name: SelectHealth
+    careers_url: https://selecthealth.org/about/careers
+    ats: auto
+  - name: CHG Healthcare
+    careers_url: https://chghealthcare.com/careers
+    ats: auto
+  - name: Cotiviti
+    careers_url: https://www.cotiviti.com/careers/
+    ats: auto
+
+  # --- Aerospace / manufacturing / consumer ---
+  - name: L3Harris
+    careers_url: https://www.l3harris.com/careers
+    ats: auto
+  - name: Traeger Grills
+    careers_url: https://www.traeger.com/careers
+    ats: auto
+  - name: Young Living
+    careers_url: https://www.youngliving.com/en_US/company/careers
+    ats: auto
+  - name: O.C. Tanner
+    careers_url: https://www.octanner.com/careers.html
+    ats: auto
+  - name: Larry H. Miller Company
+    careers_url: https://www.lhm.com/careers/
+    ats: auto
+  - name: Sorenson Communications
+    careers_url: https://www.sorenson.com/careers/
+    ats: auto
+  - name: Bonneville International
+    careers_url: https://bonneville.com/careers/
+    ats: auto
+  - name: Savage Services
+    careers_url: https://www.savageservices.com/careers
+    ats: auto
+  - name: Extra Space Storage
+    careers_url: https://www.extraspace.com/careers/
+    ats: auto
+
+  # --- Public sector / education ---
+  - name: University of Utah
+    careers_url: https://www.hr.utah.edu/jobs/
+    ats: auto
+  - name: Salt Lake City Corp
+    careers_url: https://www.slc.gov/hr/employment/
+    ats: auto
+  - name: Salt Lake County
+    careers_url: https://www.slco.org/human-resources/employment/
+    ats: auto
+  - name: State of Utah
+    careers_url: https://jobs.utah.gov/
+    ats: auto
+  - name: Utah Transit Authority
+    careers_url: https://www.rideuta.com/Careers
+    ats: auto
+  - name: Salt Lake Community College
+    careers_url: https://www.slcc.edu/hr/employment/index.aspx
+    ats: auto
