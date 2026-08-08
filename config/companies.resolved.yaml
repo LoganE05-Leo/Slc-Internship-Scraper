@@ -14,7 +14,6 @@ companies:
 - name: Mountain America Credit Union
   careers_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
   ats: workday
-  source_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
   tenant: macu
   dc: wd5
   site: MACU_Careers
@@ -128,12 +127,15 @@ companies:
   dc: wd5
   site: external_experienced
 - name: eBay
-  careers_url: https://jobs.ebayinc.com/us/en/search-results
-  ats: unknown
+  careers_url: https://ebay.wd5.myworkdayjobs.com/TCGPlayer_External_Career
+  ats: workday
+  tenant: ebay
+  dc: wd5
+  site: TCGPlayer_External_Career
 - name: Qualtrics
-  careers_url: https://www.qualtrics.com/careers/us/en/search-results
-  ats: unknown
-  source_url: https://www.qualtrics.com/careers/us/en/search-results
+  careers_url: https://boards.greenhouse.io/qualtrics
+  ats: greenhouse
+  token: qualtrics
 - name: Instructure
   careers_url: https://www.instructure.com/careers
   ats: ashby
@@ -154,8 +156,9 @@ companies:
   dc: wd501
   site: Careers
 - name: Vivint
-  careers_url: https://vivint.wd5.myworkdayjobs.com/vivintjobs
-  ats: unknown
+  careers_url: https://apply.workable.com/vivint-inc-1
+  ats: workable
+  token: vivint-inc-1
 - name: Health Catalyst
   careers_url: https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers
   ats: workday
@@ -179,9 +182,9 @@ companies:
   source_url: https://www.entrata.com/careers
   token: entrata
 - name: 1-800 Contacts
-  careers_url: https://www.1800contacts.com/careers
-  ats: unknown
-  source_url: https://www.1800contacts.com/careers
+  careers_url: https://boards.greenhouse.io/1800contacts
+  ats: greenhouse
+  token: 1800contacts
 - name: Overstock.com
   careers_url: https://overstock.wd5.myworkdayjobs.com/BedBathandBeyond_Careers
   ats: workday
@@ -240,9 +243,11 @@ companies:
   source_url: https://job-boards.greenhouse.io/traegergrills
   token: traegergrills
 - name: Young Living
-  careers_url: https://www.youngliving.com/en_us/company/careers/index
-  ats: unknown
-  source_url: https://www.youngliving.com/en_us/company/careers/index
+  careers_url: https://youngliving.wd5.myworkdayjobs.com/YLEO
+  ats: workday
+  tenant: youngliving
+  dc: wd5
+  site: YLEO
 - name: O.C. Tanner
   careers_url: https://www.octanner.com/careers.html
   ats: workday

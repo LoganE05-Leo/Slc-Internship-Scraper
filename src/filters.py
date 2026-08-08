@@ -2,7 +2,30 @@
 import os
 import re
 
-INTERN_RE = re.compile(r"\bintern(?:ship|s)?\b|\bco-?ops?\b", re.IGNORECASE)
+# Title-level signal: a title match is trusted outright. Includes common
+# finance-internship title conventions that don't contain "intern" at all.
+TITLE_INTERN_RE = re.compile(
+    r"\bintern(?:ship|s)?\b"
+    r"|\bco-?ops?\b"
+    r"|\bsummer\s+analysts?\b"
+    r"|\bsummer\s+associates?\b"
+    r"|\brotational\s+programs?\b",
+    re.IGNORECASE,
+)
+
+# Backwards-compatible alias used for title/anchor-text matching where no
+# separate description exists (e.g. the generic HTML fallback's link text).
+INTERN_RE = TITLE_INTERN_RE
+
+# Description-level fallback: only used when the title itself didn't match.
+DESCRIPTION_INTERN_RE = re.compile(r"\bintern(?:ship|s)?\b|\bco-?ops?\b", re.IGNORECASE)
+
+# Words that, found near an "intern(ship)" mention in a description, mean
+# it's describing a *qualification* ("internship experience preferred")
+# rather than the posting itself being an internship.
+_DISQUALIFYING_WORDS = {"experience", "preferred", "required", "plus", "background"}
+_CONTEXT_WINDOW = 4
+
 FALL_2026_RE = re.compile(
     r"\b(?:fall|autumn)\s+2026\b|\b2026\s+(?:fall|autumn)\b", re.IGNORECASE
 )
@@ -23,8 +46,36 @@ DEFAULT_LOCATION_KEYWORDS = [
 ]
 
 
-def is_internship(text: str) -> bool:
-    return bool(INTERN_RE.search(text or ""))
+def _is_disqualified_mention(text: str, match: re.Match) -> bool:
+    start, end = match.span()
+    before = re.findall(r"[A-Za-z]+", text[:start])[-_CONTEXT_WINDOW:]
+    after = re.findall(r"[A-Za-z]+", text[end:])[:_CONTEXT_WINDOW]
+    nearby = {w.lower() for w in before + after}
+    return bool(nearby & _DISQUALIFYING_WORDS)
+
+
+def is_internship_title(title: str) -> bool:
+    return bool(TITLE_INTERN_RE.search(title or ""))
+
+
+def is_internship_description(description: str) -> bool:
+    """True if the description has an "intern(ship)"/"co-op" mention that
+    isn't just describing a preferred qualification (e.g. "internship
+    experience preferred" on an otherwise full-time role)."""
+    text = description or ""
+    return any(
+        not _is_disqualified_mention(text, match)
+        for match in DESCRIPTION_INTERN_RE.finditer(text)
+    )
+
+
+def is_internship(posting: dict) -> bool:
+    """Title match wins outright. Description is only a fallback, so a
+    generic title (e.g. "Paralegal") doesn't get pulled in just because its
+    description prefers candidates with past internship experience."""
+    if is_internship_title(posting.get("title", "")):
+        return True
+    return is_internship_description(posting.get("description", ""))
 
 
 def is_fall_2026(text: str) -> bool:
@@ -43,7 +94,7 @@ def tag_posting(posting: dict) -> list:
         tags.append("fall-2026")
     elif is_year_2026(text):
         tags.append("2026")
-    if is_internship(text):
+    if is_internship(posting):
         tags.append("internship")
     return tags
 
@@ -78,8 +129,7 @@ def filter_postings(postings: list) -> list:
     mode = os.environ.get("FILTER_MODE", "internship").lower()
     result = []
     for posting in postings:
-        text = f"{posting.get('title', '')} {posting.get('description', '')}"
-        if not is_internship(text):
+        if not is_internship(posting):
             continue
 
         tags = tag_posting(posting)
@@ -87,8 +137,10 @@ def filter_postings(postings: list) -> list:
 
         if mode == "fall2026" and "fall-2026" not in tags:
             continue
-        if mode == "year2026" and not is_year_2026(text):
-            continue
+        if mode == "year2026":
+            text = f"{posting.get('title', '')} {posting.get('description', '')}"
+            if not is_year_2026(text):
+                continue
 
         if not location_matches(posting.get("location", "")):
             continue

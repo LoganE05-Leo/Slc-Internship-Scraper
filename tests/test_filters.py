@@ -8,7 +8,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.filters import filter_postings, is_fall_2026, is_internship, tag_posting
 
 
-class TestInternshipMatching(unittest.TestCase):
+def posting(title="", description="", **kwargs):
+    return {"title": title, "description": description, **kwargs}
+
+
+class TestInternshipTitleMatching(unittest.TestCase):
     def test_matches_internship_variants(self):
         positives = [
             "Summer Internship",
@@ -18,9 +22,20 @@ class TestInternshipMatching(unittest.TestCase):
             "Coop position",
             "Co-Ops available",
         ]
-        for text in positives:
-            with self.subTest(text=text):
-                self.assertTrue(is_internship(text))
+        for title in positives:
+            with self.subTest(title=title):
+                self.assertTrue(is_internship(posting(title=title)))
+
+    def test_matches_finance_internship_title_conventions(self):
+        positives = [
+            "Summer Analyst - Investment Banking",
+            "Summer Associate, Corporate Finance",
+            "Rotational Program - Finance",
+            "2026 Finance Rotational Program",
+        ]
+        for title in positives:
+            with self.subTest(title=title):
+                self.assertTrue(is_internship(posting(title=title)))
 
     def test_does_not_match_internal_or_international(self):
         negatives = [
@@ -29,9 +44,40 @@ class TestInternshipMatching(unittest.TestCase):
             "Head of Internal Communications",
             "International Business Manager",
         ]
-        for text in negatives:
-            with self.subTest(text=text):
-                self.assertFalse(is_internship(text))
+        for title in negatives:
+            with self.subTest(title=title):
+                self.assertFalse(is_internship(posting(title=title)))
+
+
+class TestDescriptionFallback(unittest.TestCase):
+    def test_title_match_wins_even_with_clean_description(self):
+        p = posting(title="Finance Intern", description="Join our team for the summer.")
+        self.assertTrue(is_internship(p))
+
+    def test_description_fallback_catches_generic_title(self):
+        p = posting(
+            title="Early Career Program - Summer",
+            description="This paid internship runs June through August.",
+        )
+        self.assertTrue(is_internship(p))
+
+    def test_description_mention_near_qualification_words_is_ignored(self):
+        # Real-world case: a full-time Paralegal posting whose description
+        # merely *prefers* candidates with past internship experience.
+        p = posting(
+            title="Paralegal",
+            description="Bachelor's degree in the law preferred (paralegal or "
+            "legal internship experience, or even a general interest).",
+        )
+        self.assertFalse(is_internship(p))
+
+    def test_description_mention_far_from_qualification_words_still_matches(self):
+        p = posting(
+            title="Student Program Associate",
+            description="This role is a 12-week internship based in Salt Lake City. "
+            "Housing assistance is provided for the summer.",
+        )
+        self.assertTrue(is_internship(p))
 
 
 class TestFall2026Tagging(unittest.TestCase):
@@ -47,14 +93,12 @@ class TestFall2026Tagging(unittest.TestCase):
         self.assertFalse(is_fall_2026("2027 Fall Internship"))
 
     def test_tag_posting_fall_vs_generic_year(self):
-        fall_posting = {"title": "Fall 2026 Accounting Intern", "description": ""}
-        tags = tag_posting(fall_posting)
+        tags = tag_posting(posting(title="Fall 2026 Accounting Intern"))
         self.assertIn("fall-2026", tags)
         self.assertIn("internship", tags)
         self.assertNotIn("2026", tags)
 
-        year_posting = {"title": "2026 Summer Internship", "description": ""}
-        tags = tag_posting(year_posting)
+        tags = tag_posting(posting(title="2026 Summer Internship"))
         self.assertIn("2026", tags)
         self.assertNotIn("fall-2026", tags)
 

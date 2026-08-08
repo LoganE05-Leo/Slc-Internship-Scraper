@@ -6,8 +6,13 @@
 #   python detect_ats.py
 # which writes config/companies.resolved.yaml (preferred by src/main.py).
 #
-# careers_url values were verified via web research on 2026-08-05. A few
-# notes on companies that don't use one of the 6 supported ATS platforms
+# careers_url values were verified via web research on 2026-08-05, with a
+# second pass on 2026-08-08 specifically hunting for supported-ATS boards
+# behind companies that first resolved to something else (subsidiary
+# boards, regional offices, etc.) -- see individual per-company comments
+# below for anything non-obvious (Vivint, Young Living, eBay, KPMG).
+#
+# Remaining companies that don't use one of the 6 supported ATS platforms
 # (they'll fall back to generic HTML scraping, which is best-effort):
 #   - Zions Bancorporation: custom portal (SelectMinds)
 #   - Goldman Sachs: proprietary "Higher" platform
@@ -15,21 +20,23 @@
 #   - American Express: Avature
 #   - Ally Financial: Avature
 #   - EY: SAP SuccessFactors
-#   - Eide Bailly, eBay: custom-branded, backend unconfirmed
+#   - Eide Bailly: custom-branded, backend unconfirmed
 #   - CBIZ: Oracle Recruiting Cloud
 #   - Tanner LLC: JazzHR
-#   - Qualtrics: Phenom People
 #   - Cotiviti: iCIMS
 #   - L3Harris: TalentBrew
 #   - Larry H. Miller Company, Sorenson Communications: UKG/UltiPro
 #   - Savage Services: Dayforce HCM
 #   - USANA: Jobvite
 #   - University of Utah: PeopleAdmin
-#   - Salt Lake County, Salt Lake Community College: NEOGOV/GovernmentJobs
+#   - Salt Lake County: iCIMS (careers-slco.icims.com)
+#   - Salt Lake Community College: NEOGOV/GovernmentJobs
 #   - State of Utah: Cornerstone OnDemand
-#   - Utah Transit Authority, Zonos, Young Living, Deloitte, KPMG,
-#     Haynie & Company, Cook Martin Poulson, 1-800 Contacts: platform
+#   - Utah Transit Authority: Talemetry/Radancy
+#   - Zonos, Deloitte, Haynie & Company, Cook Martin Poulson: platform
 #     unconfirmed or self-hosted
+#   - KPMG: US firm is on Avature; a jobs.lever.co/kpmgnz board exists but
+#     is KPMG New Zealand's, deliberately not used (see comment below)
 # Progrexion was dropped: PGX Holdings filed Chapter 11 in 2023 and the
 # domain no longer resolves -- no successor careers site found.
 
@@ -45,8 +52,13 @@ companies:
     careers_url: https://wcfgroup.applicantpro.com/
     ats: auto
   - name: Mountain America Credit Union
+    # Public-facing careers page is a JS front-end; real listings live on
+    # this Workday board. Pinned explicitly (not auto) since it's confirmed.
     careers_url: https://macu.wd5.myworkdayjobs.com/MACU_Careers
-    ats: auto
+    ats: workday
+    tenant: macu
+    dc: wd5
+    site: MACU_Careers
   - name: Progressive Leasing
     careers_url: https://progleasing.wd5.myworkdayjobs.com/ProgLeasingCareers
     ats: auto
@@ -95,6 +107,9 @@ companies:
     careers_url: https://careers.ey.com/
     ats: auto
   - name: KPMG
+    # A jobs.lever.co/kpmgnz board exists and is live, but it's KPMG NEW
+    # ZEALAND's board, not the US firm -- deliberately not used here since
+    # it wouldn't return real SLC-area postings. US KPMG stays on Avature.
     careers_url: https://uskpmgats.avature.net/careers/SearchResults
     ats: auto
 
@@ -120,14 +135,22 @@ companies:
     careers_url: https://adobe.wd5.myworkdayjobs.com/external_experienced
     ats: auto
   - name: eBay
-    # The careers page's HTML contains an unreliable myworkdayjobs.com
-    # reference (matched to an individual job link, not the board root) --
-    # pinned to skip auto-detection and use the generic HTML fallback instead.
-    careers_url: https://jobs.ebayinc.com/us/en/search-results
-    ats: unknown
+    # eBay's own careers site has no supported ATS. This is eBay's TCGplayer
+    # subsidiary's Workday board -- real and working, but TCGplayer postings
+    # are unlikely to be SLC-relevant. Kept anyway since it's strictly better
+    # than the generic-HTML fallback (which found nothing on the JS-heavy
+    # main site).
+    careers_url: https://ebay.wd5.myworkdayjobs.com/TCGPlayer_External_Career
+    ats: workday
+    tenant: ebay
+    dc: wd5
+    site: TCGPlayer_External_Career
   - name: Qualtrics
-    careers_url: https://www.qualtrics.com/careers/us/en/search-results
-    ats: auto
+    # Public careers page is a custom/Phenom-styled frontend, but the
+    # backend ATS is Greenhouse (confirmed live, 56 postings).
+    careers_url: https://boards.greenhouse.io/qualtrics
+    ats: greenhouse
+    token: qualtrics
   - name: Instructure
     careers_url: https://www.instructure.com/careers
     ats: auto
@@ -138,11 +161,14 @@ companies:
     careers_url: https://ancestry.wd501.myworkdayjobs.com/Careers
     ats: auto
   - name: Vivint
-    # Page is genuinely Workday-hosted, but the wday/cxs jobs endpoint 422s
-    # for every tenant/dc/site combination tried -- pinned to skip
-    # auto-detection and use the generic HTML fallback instead.
-    careers_url: https://vivint.wd5.myworkdayjobs.com/vivintjobs
-    ats: unknown
+    # Vivint also has a genuinely correct Workday board
+    # (vivint.wd5.myworkdayjobs.com/vivintjobs, confirmed via indexed job
+    # URLs) but its wday/cxs JSON API currently 500s/422s -- looks like a
+    # temporary Workday-side outage, not a wrong tenant/dc/site. Using this
+    # working Workable board instead until Workday recovers.
+    careers_url: https://apply.workable.com/vivint-inc-1
+    ats: workable
+    token: vivint-inc-1
   - name: Health Catalyst
     careers_url: https://healthcatalyst.wd5.myworkdayjobs.com/healthcatalystcareers
     ats: auto
@@ -156,8 +182,11 @@ companies:
     careers_url: https://www.entrata.com/company/careers
     ats: auto
   - name: 1-800 Contacts
-    careers_url: https://www.1800contacts.com/careers
-    ats: auto
+    # Main site bot-blocks scrapers (403), but the backend ATS is Greenhouse
+    # (confirmed live, 8 postings).
+    careers_url: https://boards.greenhouse.io/1800contacts
+    ats: greenhouse
+    token: 1800contacts
   - name: Overstock.com
     careers_url: https://overstock.wd5.myworkdayjobs.com/BedBathandBeyond_Careers
     ats: auto
@@ -193,8 +222,15 @@ companies:
     careers_url: https://job-boards.greenhouse.io/traegergrills
     ats: auto
   - name: Young Living
-    careers_url: https://www.youngliving.com/en_us/company/careers/index
-    ats: auto
+    # Confirmed correct tenant/dc/site via indexed job URLs, but the
+    # wday/cxs JSON API currently 500s/422s -- looks like a temporary
+    # Workday-side outage on their tenant. Pinned anyway so it self-heals
+    # once Workday recovers, instead of relying on generic HTML forever.
+    careers_url: https://youngliving.wd5.myworkdayjobs.com/YLEO
+    ats: workday
+    tenant: youngliving
+    dc: wd5
+    site: YLEO
   - name: O.C. Tanner
     careers_url: https://www.octanner.com/careers.html
     ats: auto
