@@ -1,5 +1,9 @@
 # SLC Internship Scraper - Latest Run
 
-_Generated: 2026-08-10T14:53:56.654670+00:00_
+_Generated: 2026-08-12T14:52:46.846256+00:00_
 
-No new postings found this run.
+**2 new posting(s)** -- 0 Fall 2026 (starred)
+
+- **Ancestry** -- [Machine Learning Engineer, Co-op](https://ancestry.wd501.myworkdayjobs.com/Careers/job/Remote/Machine-Learning-Engineer--Co-op_R003377) -- Remote (workday)
+- **Intermountain Health** -- [Student Intern I-NonClinical](https://imh.wd108.myworkdayjobs.com/IntermountainCareers/job/Key-Bank-Tower/Student-Intern-I-NonClinical_R180452) -- Home Services - Salt Lake City; Key Bank Tower (workday)
+
