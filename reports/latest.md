@@ -1,8 +1,9 @@
 # SLC Internship Scraper - Latest Run
 
-_Generated: 2026-09-07T18:32:54.635801+00:00_
+_Generated: 2026-09-09T17:29:29.575617+00:00_
 
-**1 new posting(s)** -- 0 Fall 2026 (starred)
+**2 new posting(s)** -- 0 Fall 2026 (starred)
 
-- **Deloitte** -- [Tax - Tax Intern - Business - Summer 2027](https://apply.deloitte.com/en_US/careers/JobDetail/Tax-Tax-Intern-Business-Summer-2027/365776) -- Unknown location (generic)
+- **Zions Bancorporation** -- [Intern- Process Engineer](https://careers.zionsbancorp.com/jobs/intern-process-engineer-28046) -- Unknown location (generic)
+- **Zions Bancorporation** -- [Intern- Quantitative Modeling Analyst](https://careers.zionsbancorp.com/jobs/intern-quantitative-modeling-analyst-28045) -- Unknown location (generic)
 
